@@ -1,0 +1,40 @@
+---
+const dias = [
+  ["", "", "", "", "", "", 1],
+  [2, 3, 4, 5, 6, 7, 8],
+  [9, 10, 11, 12, 13, 14, 15],
+  [16, 17, 18, 19, 20, 21, 22],
+  [23, 24, 25, 26, 27, 28, 29],
+  [30, 31, "", "", "", "", ""]
+];
+
+const diasSemana = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+---
+
+<table class="w-full max-w-md mx-auto border border-gray-300 bg-white shadow-md text-center">
+  <thead>
+    <tr class="bg-navy text-white">
+      {diasSemana.map((dia) => (
+        <th class="p-2 border border-gray-300">{dia}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {dias.map((semana) => (
+      <tr>
+        {semana.map((dia) => (
+          <td class="p-3 relative">
+            {dia === 14 ? (
+              <div class="relative w-10 h-10 mx-auto flex items-center justify-center bg-blue-500 text-white rounded-full font-bold">
+                {dia}
+                <span class="absolute top-[-8px] text-lg">❤️</span>
+              </div>
+            ) : (
+              dia && <span>{dia}</span>
+            )}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>

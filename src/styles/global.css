@@ -1,0 +1,8 @@
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap'); */
+
+h1 {
+    font-family: "Imperial Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}

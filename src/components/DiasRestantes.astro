@@ -1,23 +1,79 @@
 ---
+import '../styles/font_h1_styles.css'
 ---
-<div class="w-full h-max py-10 flex  flex-col justify-center items-center ">
-    <h1>Faltan</h1>
-    <div class=" w-[85%] h-20 flex  flex-col justify-center items-center"> 
-       <div class="flex flex-row justify-around  items-center  w-full h-10 border-b-[1px] border-slate-400">
-        <p class=" text-2xl font-medium">Días</p>
-        <p class=" text-2xl font-medium">Horas</p>
-        <p class=" text-2xl font-medium">Min</p>
-        <p class=" text-2xl font-medium">Seg</p>
-    </div> 
-    <div class=" w-[85%] h-20 flex flex-col justify-center items-center"> 
-        <div class="flex flex-row justify-around items-center  w-full ">
-         <p class="text-4xl font-medium">0</p>
-         <p class="text-4xl font-medium">:</p>
-         <p class="text-4xl font-medium pl-3" >00</p>
-         <p class="text-4xl font-medium">:</p>
-         <p class="text-4xl font-medium">00</p>
-         <p class="text-4xl font-medium">:</p>
-         <p class="text-4xl font-medium">00</p>
-     </div>
+
+<div class="w-full h-max py-10 flex flex-col justify-center items-center">
+  <h1 class="monsieur text-5xl">Faltan</h1>
+  <div class="w-[85%] h-20 flex flex-col justify-center items-center">
+    <div
+      class="flex flex-row justify-around items-center w-full h-10 border-b-[1px] border-slate-400"
+    >
+      <p class="text-2xl font-medium font-serif">Días</p>
+      <p class="text-2xl font-medium font-serif">Horas</p>
+      <p class="text-2xl font-medium font-serif">Min</p>
+      <p class="text-2xl font-medium font-serif">Seg</p>
     </div>
+    <div class="w-[85%] h-20 flex flex-col justify-center items-center">
+      <div class="flex flex-row justify-around items-center w-full">
+        <p class="text-4xl font-medium font-serif days">0</p>
+        <p class="text-4xl font-medium font-serif">:</p>
+        <p class="text-4xl font-medium font-serif hours">00</p>
+        <p class="text-4xl font-medium font-serif">:</p>
+        <p class="text-4xl font-medium font-serif minutes">00</p>
+        <p class="text-4xl font-medium font-serif">:</p>
+        <p class="text-4xl font-medium font-serif seconds">00</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    let countDownDate = new Date("Jun 21, 2025 18:00:00").getTime();
+    let x = setInterval(function () {
+      let now = new Date().getTime();
+      let distance = countDownDate - now;
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const daysElement = document.querySelector(".days");
+      if (daysElement) {
+        daysElement.innerHTML = days.toString();
+      }
+      const hoursElement = document.querySelector(".hours");
+      if (hoursElement) {
+        hoursElement.innerHTML = hours.toString().padStart(2, "0");
+      }
+      const minutesElement = document.querySelector(".minutes");
+      if (minutesElement) {
+        minutesElement.innerHTML = minutes.toString().padStart(2, "0");
+      }
+      const secondsElement = document.querySelector(".seconds");
+      if (secondsElement) {
+        secondsElement.innerHTML = seconds.toString().padStart(2, "0");
+      }
+
+      if (distance < 0) {
+        clearInterval(x);
+        const daysElement = document.querySelector(".days");
+        if (daysElement) {
+          daysElement.innerHTML = "0";
+        }
+        if (hoursElement) {
+          hoursElement.innerHTML = "00";
+        }
+        if (minutesElement) {
+          minutesElement.innerHTML = "00";
+        }
+        if (secondsElement) {
+          secondsElement.innerHTML = "00";
+        }
+      }
+    }, 1000);
+  </script>
+
+  <style>
+
+  </style>
 </div>

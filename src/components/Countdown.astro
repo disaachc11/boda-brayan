@@ -1,0 +1,63 @@
+---
+interface Props {
+  targetDate: string;
+}
+
+const { targetDate } = Astro.props;
+---
+
+<section id="countdown" class="section bg-white">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="section-title">Cuenta Regresiva</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+      <div class="bg-[#faf7f2] p-4 rounded-lg">
+        <div class="text-3xl md:text-4xl font-light text-[#a27b5c]" id="days">00</div>
+        <div class="text-sm uppercase tracking-wider text-[#8d7b68]">Días</div>
+      </div>
+      <div class="bg-[#faf7f2] p-4 rounded-lg">
+        <div class="text-3xl md:text-4xl font-light text-[#a27b5c]" id="hours">00</div>
+        <div class="text-sm uppercase tracking-wider text-[#8d7b68]">Horas</div>
+      </div>
+      <div class="bg-[#faf7f2] p-4 rounded-lg">
+        <div class="text-3xl md:text-4xl font-light text-[#a27b5c]" id="minutes">00</div>
+        <div class="text-sm uppercase tracking-wider text-[#8d7b68]">Minutos</div>
+      </div>
+      <div class="bg-[#faf7f2] p-4 rounded-lg">
+        <div class="text-3xl md:text-4xl font-light text-[#a27b5c]" id="seconds">00</div>
+        <div class="text-sm uppercase tracking-wider text-[#8d7b68]">Segundos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ targetDate }}>
+  // Countdown timer
+  function updateCountdown() {
+    const weddingDate = new Date(targetDate).getTime();
+    const now = new Date().getTime();
+    const timeLeft = weddingDate - now;
+    
+    if (timeLeft <= 0) {
+      document.getElementById('days').innerText = '00';
+      document.getElementById('hours').innerText = '00';
+      document.getElementById('minutes').innerText = '00';
+      document.getElementById('seconds').innerText = '00';
+      return;
+    }
+    
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').innerText = days.toString().padStart(2, '0');
+    document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+  }
+  
+  // Update the countdown every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+

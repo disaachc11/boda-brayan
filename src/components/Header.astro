@@ -1,0 +1,57 @@
+---
+interface Props {
+  couple: string;
+}
+
+const { couple } = Astro.props;
+---
+
+<header class="fixed w-full bg-[#faf7f2]/90 backdrop-blur-sm z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="#" class="font-script text-2xl text-[#a27b5c]">{couple}</a>
+    <nav class="hidden md:block">
+      <ul class="flex gap-6">
+        <li><a href="#inicio" class="text-sm hover:text-[#d4b08c] transition-colors">Inicio</a></li>
+        <li><a href="#evento" class="text-sm hover:text-[#d4b08c] transition-colors">Evento</a></li>
+        <li><a href="#galeria" class="text-sm hover:text-[#d4b08c] transition-colors">Galería</a></li>
+        <li><a href="#rsvp" class="text-sm hover:text-[#d4b08c] transition-colors">RSVP</a></li>
+      </ul>
+    </nav>
+    <button class="md:hidden text-[#a27b5c]" id="menu-toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-menu hidden md:hidden absolute w-full bg-[#faf7f2] shadow-md" id="mobile-menu">
+    <ul class="py-4 px-4">
+      <li><a href="#inicio" class="block py-2 hover:text-[#d4b08c]">Inicio</a></li>
+      <li><a href="#evento" class="block py-2 hover:text-[#d4b08c]">Evento</a></li>
+      <li><a href="#galeria" class="block py-2 hover:text-[#d4b08c]">Galería</a></li>
+      <li><a href="#rsvp" class="block py-2 hover:text-[#d4b08c]">RSVP</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Toggle mobile menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Close mobile menu when clicking on a link
+  const mobileLinks = document.querySelectorAll('#mobile-menu a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  });
+</script>
+

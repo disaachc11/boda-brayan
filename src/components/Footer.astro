@@ -1,0 +1,20 @@
+---
+interface Props {
+  couple: string;
+}
+
+const { couple } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-8 bg-[#8d7b68] text-white text-center">
+  <div class="container mx-auto px-4">
+    <h2 class="font-script text-3xl mb-4">{couple}</h2>
+    <p class="mb-6">¡Gracias por compartir este día tan especial con nosotros!</p>
+    
+    <div class="w-16 h-0.5 bg-white/50 mx-auto mb-6"></div>
+    
+    <p class="text-sm text-white/70">© {currentYear} | Todos los derechos reservados</p>
+  </div>
+</footer>
+

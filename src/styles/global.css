@@ -6,3 +6,121 @@ h1 {
     font-weight: 400;
     font-style: normal;
 } 
+
+
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveRightToLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.move-left-to-right {
+    animation: moveLeftToRight 1s ease-in-out forwards;
+}
+.move-left-to-right:nth-child(1) {
+    animation-delay: 0s;
+}
+.move-left-to-right:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.move-left-to-right:nth-child(3) {
+    animation-delay: 1s;
+}
+.move-left-to-right:nth-child(4) {
+    animation-delay: 1.5s;
+}
+.move-left-to-right:nth-child(5) {
+    animation-delay: 2s;
+}
+.move-left-to-right:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+.move-right-to-left {
+    animation: moveRightToLeft 1s ease-in-out  forwards;
+}
+.move-right-to-left:nth-child(1) {
+    animation-delay: 0s;
+}
+.move-right-to-left:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.move-right-to-left:nth-child(3) {
+    animation-delay: 1s;
+}
+.move-right-to-left:nth-child(4) {
+    animation-delay: 1.5s;
+}
+.move-right-to-left:nth-child(5) {
+    animation-delay: 2s;
+}
+.move-right-to-left:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+@keyframes bouncerLeftToRightTopToBottom {
+    0% {
+        transform: translateX(-100%) translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes bouncerRightToLeftTopToBottom {
+    0% {
+        transform: translateX(100%) translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+.boucer-left {
+    animation: bouncerLeftToRightTopToBottom 1s ease-in-out forwards;
+}
+
+.bouncer-right{
+    animation: bouncerRightToLeftTopToBottom 1s ease-in-out forwards;
+}
+.boucer-left:nth-child(1) {
+    animation-delay: 0s;
+}
+.boucer-left:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.boucer-left:nth-child(3) {
+    animation-delay: 1s;
+}
+.boucer-rigt:nth-child(1) {
+    animation-delay: 0s;
+}
+.boucer-right:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.boucer-right:nth-child(3) {
+    animation-delay: 1s;
+}

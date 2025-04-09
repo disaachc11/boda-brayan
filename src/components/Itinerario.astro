@@ -1,74 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import iglesia from '../assets/iglesia.svg';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itinerario</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-rose-50 min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 md:p-8">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-serif text-rose-800 mb-2">Bryan & Genesis</h1>
-            <p class="text-rose-600">Se parte de nuestro dia especial</p>
-            <p class="text-sm text-gray-600">Sábado, 21 de Junio de 2025</p>
+import '../styles/font_h1_styles.css';
+---
+<div class="bg-1 min-w-sm w-full flex flex-col justify-center items-center">
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-serif text-rose-800 mb-2 monsieur">Bryan & Genesis</h1>
+    <p class="text-rose-600">Se parte de nuestro dia especial</p>
+    <p class="text-sm text-gray-600">Sábado, 21 de Junio de 2025</p>
+  </div>
+
+  <div class="flex flex-row w-[90%] justify-between">
+    <div id="primero" class="w-[30%] h-[200px] flex flex-col justify-between items-center">
+        <div>
+            <Image
+                src={iglesia}
+                alt="Iglesia"
+                class="w-6 h-6 move-left-to-right"
+                />
         </div>
-
-        <!-- Timeline -->
-        <div class="space-y-6">
-            <!-- Event Item -->
-            <div class="flex items-start">
-                <div class="flex-shrink-0 w-20 text-right pr-4">
-                    <p class="text-sm font-medium text-rose-700">6:00 PM</p>
-                </div>
-                <div class="flex-grow border-l-2 border-rose-200 pl-4">
-                    <h3 class="text-lg font-serif text-gray-800">Ceremonia</h3>
-                    <p class="text-sm text-gray-600">Iglesia Trujillo</p>
-                    <p class="text-xs text-gray-500">Calle Principal </p>
-                </div>
-            </div>
-
-            <!-- Event Item -->
-            <div class="flex items-start">
-                <div class="flex-shrink-0 w-20 text-right pr-4">
-                    <p class="text-sm font-medium text-rose-700">7:30 PM</p>
-                </div>
-                <div class="flex-grow border-l-2 border-rose-200 pl-4">
-                    <h3 class="text-lg font-serif text-gray-800">Recepción</h3>
-                    <p class="text-sm text-gray-600">Salón </p>
-                    <p class="text-xs text-gray-500">ubicacion 456</p>
-                </div>
-            </div>
-
-            <!-- Event Item -->
-            <div class="flex items-start">
-                <div class="flex-shrink-0 w-20 text-right pr-4">
-                    <p class="text-sm font-medium text-rose-700">8:00 PM</p>
-                </div>
-                <div class="flex-grow border-l-2 border-rose-200 pl-4">
-                    <h3 class="text-lg font-serif text-gray-800">Cena & Brindis</h3>
-                    <p class="text-sm text-gray-600"></p>
-                    <p class="text-xs text-gray-500"></p>
-                </div>
-            </div>
+        <div>
+            <Image
+                src={iglesia}
+                alt="Iglesia"
+                class="w-6 h-6 move-left-to-right"
+                />
         </div>
-         
-          <!-- Event Item -->
-          <div class="flex items-start">
-            <div class="flex-shrink-0 w-20 text-right pr-4">
-                <p class="text-sm font-medium text-rose-700">9:00 PM</p>
-            </div>
-            <div class="flex-grow border-l-2 border-rose-200 pl-4">
-                <h3 class="text-lg font-serif text-gray-800">Fotografias y Felicitaciones</h3>
-                <p class="text-sm text-gray-600"></p>
-                <p class="text-xs text-gray-500"></p>
-            </div>
+        <div>
+            <Image
+                src={iglesia}
+                alt="Iglesia"
+                class="w-6 h-6 move-left-to-right"
+                />
+        </div>
+        <div>
+            <Image
+                src={iglesia}
+                alt="Iglesia"
+                class="w-6 h-6 move-left-to-right"
+                />
+        </div>
+        <div>
+            <Image
+                src={iglesia}
+                alt="Iglesia"
+                class="w-6 h-6 move-left-to-right"
+                />
+        </div>
+        <div>
+            <Image
+                src={iglesia}
+                alt="Iglesia"
+                class="w-6 h-6 move-left-to-right"
+                />
         </div>
     </div>
-        <!-- Footer -->
-        <div class="mt-8 text-center">
-            <p class="text-sm text-rose-600"></p>
-            
+    <div id="segundo" class="h-[200px] relative flex  items-center flex-row">
+      <div class="h-[95%] border-1 border-[#d0a65f] rounded-lg"></div>
+      <div class="h-[95%] flex flex-col justify-between absolute -translate-x-[3px] ">
+        <div class="w-2 h-2  bg-[#d0a65f] rounded-full"></div>
+        <div class="w-2 h-2  bg-[#d0a65f] rounded-full"></div>
+        <div class="w-2 h-2  bg-[#d0a65f] rounded-full"></div>
+        <div class="w-2 h-2  bg-[#d0a65f] rounded-full"></div>
+        <div class="w-2 h-2  bg-[#d0a65f] rounded-full"></div>
+        <div class="w-2 h-2  bg-[#d0a65f] rounded-full"></div>
+      </div>
     </div>
-</body>
-</html>
+    <div id="tercero" class="w-[30%] h-[200px] flex flex-col justify-between items-center">
+        <div>
+           <p class="bouncer-right text-center text-[10px] pt-serif-regular text-slate-600">Ceremonia</p>
+        </div>
+        <div>
+           <p class="boucer-left text-center text-[10px] pt-serif-regular text-slate-600">Recepcion</p>
+        </div>
+        <div>
+           <p class=" bouncer-right text-center text-[10px] pt-serif-regular text-slate-600">Brindis</p>
+        </div>
+        <div>
+           <p class="boucer-left text-center text-[10px] pt-serif-regular text-slate-600">Fotografia</p>
+        </div>
+        <div>
+           <p class=" bouncer-right text-center text-[10px] pt-serif-regular text-slate-600">Cena</p>
+        </div>
+        <div>
+           <p class="boucer-left text-center text-[10px] pt-serif-regular text-slate-600">Corte De Pastel</p>
+        </div>
+    </div>
+    <div id="cuarto" class="w-[30%] h-[200px] flex flex-col justify-between items-center">
+        <div>
+          <p class="move-right-to-left text-center text-[10px] pt-serif-regular text-slate-600">6:00 pm</p>
+        </div>
+        <div>
+          <p class="move-right-to-left text-center text-[10px] pt-serif-regular text-slate-600">7:00 pm</p>
+        </div>
+        <div>
+          <p class="move-right-to-left text-center text-[10px] pt-serif-regular text-slate-600">7:15 pm</p>
+        </div>
+        <div>
+          <p class="move-right-to-left text-center text-[10px] pt-serif-regular text-slate-600">7:30 pm</p>
+        </div>
+        <div>
+          <p class="move-right-to-left text-center text-[10px] pt-serif-regular text-slate-600">8:00 pm</p>
+        </div>
+        <div>
+          <p class="move-right-to-left text-center text-[10px] pt-serif-regular text-slate-600">8:40 pm</p>
+        </div>
+    </div>
+  </div>
+</div>

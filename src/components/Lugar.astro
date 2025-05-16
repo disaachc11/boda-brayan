@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import "../styles/font_h1_styles.css";
+---
+<style>
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .bounce {
+    animation: bounce 0.8s ease-in-out infinite;
+  }
+</style>
+<div class="w-full mx-auto flex flex-col justify-center items-center p-6 h-1/2">
+  <Image
+    src="/src/assets/locations.svg"
+    alt="Iglesia"
+    width={64}
+    height={64}
+    class="w-16 h-16 mb-4 bounce"
+  />
+  <h1 class="text-4xl text-blue-600 font-bold mb-4 monsieur-bold">Lugar</h1>
+
+  <div class="mb-4 flex flex-col justify-center items-center">
+    <p class="text-lg font-semibold text-gray-900 inria-bold">Villa Mari</p>
+    <p class="text-gray-600 inria">(Trujillo, Colón)</p>
+  </div>
+
+  <a
+    href="#"
+    class="inline-flex items-center inria-bold justify-center bg-gradient-to-tl from-[#af870c] to-[#fce474] rounded-lg w-32 text-center px-2 py-1 text-white"
+    style="text-decoration: none;"
+  >
+    Ver Mapa
+  </a>
+</div>

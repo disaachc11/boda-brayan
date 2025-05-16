@@ -1,0 +1,23 @@
+---
+import Image from "astro/components/Image.astro";
+import image from '../assets/heart.svg'
+
+---
+
+
+<section class="w-full h-screen flex flex-col justify-center items-center">
+
+    <div class="w-full h-max flex flex-col justify-center items-center">
+        <Image
+            src={image}
+            alt="Hero Image"
+            class="w-24 h-24 object-cover"
+            width={40}
+            height={40}
+            />
+    </div>
+     <div class="w-full h-max flex flex-col justify-center items-center">
+
+    </div>
+
+</section>

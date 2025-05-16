@@ -1,0 +1,93 @@
+---
+import '../styles/font_h1_styles.css';
+
+---
+<style>
+    .adelia {
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    .typing-cursor {
+        display: inline-block;
+        width: 1ch;
+        border-right: 2px solid black;
+        animation: blink 0.7s steps(1) infinite;
+        vertical-align: bottom;
+        margin-left: 2px;
+    }
+    @keyframes blink {
+        0%, 100% { border-color: black; }
+        50% { border-color: transparent; }
+    }
+</style>
+
+<section class="w-full h-screen flex flex-col justify-center ">
+    <h1 class="text-left px-5 adelia text-xl font-bold py-2 ">
+        <span id="typing-text-1"></span><span class="typing-cursor"></span>
+    </h1>
+    <h2 class="inria text-md text-left px-5 w-[50%]">
+        <span id="typing-text-2"></span><span class="typing-cursor" id="cursor-2" style="display:none"></span>
+    </h2>
+</section>
+
+<script>
+    const text1 = "El amor";
+    const text2 = "Nos ha llevado a este momento magico";
+    const typingText1 = document.getElementById('typing-text-1') as HTMLElement | null;
+    const typingText2 = document.getElementById('typing-text-2') as HTMLElement | null;
+    const cursor1 = document.querySelector('.typing-cursor') as HTMLElement | null;
+    const cursor2 = document.getElementById('cursor-2') as HTMLElement | null;
+
+    function typeText(
+        element: HTMLElement | null,
+        text: string,
+        cursor: HTMLElement | null,
+        cb?: () => void
+    ) {
+        if (!element || !cursor) return;
+        let i = 0;
+        if (cursor) cursor.style.display = '';
+        function typeChar() {
+            if (i <= text.length) {
+                if (element) {
+                    element.textContent = text.slice(0, i);
+                }
+                i++;
+                setTimeout(typeChar, 120);
+            } else {
+                if (cursor) cursor.style.display = '';
+                if (cb) cb();
+            }
+        }
+        typeChar();
+    }
+
+    function clearTexts() {
+        if (typingText1) typingText1.textContent = '';
+        if (typingText2) typingText2.textContent = '';
+    }
+
+    function startTypingSequence() {
+        clearTexts();
+        if (cursor1) cursor1.style.display = '';
+        if (cursor2) cursor2.style.display = 'none';
+        if (typingText1 && cursor1) {
+            typeText(typingText1, text1, cursor1, () => {
+                if (cursor1) cursor1.style.display = 'none';
+                if (cursor2) cursor2.style.display = '';
+                if (typingText2 && cursor2) {
+                    typeText(typingText2, text2, cursor2, () => {
+                        setTimeout(() => {
+                            if (cursor2) cursor2.style.display = 'none';
+                            startTypingSequence();
+                        }, 3000);
+                    });
+                }
+            });
+        }
+    }
+
+    startTypingSequence();
+</script>
+

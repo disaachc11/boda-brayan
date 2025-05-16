@@ -2,15 +2,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+
+@font-face {
+  font-family: "Adelia";
+  src: url("/src/assets/adelia400.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.adelia {
+  font-family: "Adelia";
+  font-weight: 400;
+  font-style: normal;
+}
+
 .monsieur {
   font-family: "Monsieur La Doulaise", cursive;
   font-weight: 400;
   font-style: normal;
 }
 
+.monsieur-bold {
+  font-family: "Monsieur La Doulaise", cursive;
+  font-weight: 500;
+  font-style: normal;
+}
+
 .inria {
   font-family: "Inria Sans", sans-serif;
   font-weight: 300;
+  font-style: normal;
+}
+
+.inria-bold {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 500;
   font-style: normal;
 }
 .inria-sans-regular-italic {

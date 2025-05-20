@@ -1,13 +1,144 @@
 ---
-import '../styles/font_h1_styles.css'
+import "../styles/font_h1_styles.css";
 ---
-<section class="w-full h-screen flex flex-col py-5 justify-between items-center " id="cancion">
-    <div class="w-full h-max flex-col justify-center items-center text-center">
-      <h1 class="monsieur text-4xl w-full text-center"> Bryan & Genesis</h1> 
-      <p class="pt-serif-regular text-lg w-full text-center px-10">El amor es un viaje, y queremos que seas parte de nuestro primer paso juntos. Te invitamos a nuestra boda.</p> 
-    </div>
-    <div class="pt-serif-regular text-3xl w-full text-center">
-        <h1> El amor es un viaje, y queremos que seas parte de nuestro primer paso juntos. Te invitamos a nuestra boda.</h1>
 
+<section
+  class="w-full flex flex-col justify-between items-center "
+>
+  <div class="w-full h-max flex flex-col justify-center items-center text-center pt-16">
+    <div class="w-full flex flex-col justify-center items-center">
+      <h1 class="fleur text-7xl w-full text-center text-[#0d1958]">Bryan   y    Genesis</h1>
     </div>
+    <span class="w-full flex flex-col justify-center items-center mt-10">
+      <p class="pt-serif-regular text-lg w-full text-center text-slate-600 px-2">
+        El amor es un viaje, y queremos que seas
+      </p>
+      <p class="pt-serif-regular text-lg w-full text-center text-slate-600 px-10">
+        parte de nuestro primer paso juntos. Te invitamos a nuestra boda.
+      </p>
+    </span>
+  </div>
+
+<div id="reproductor" class="w-full max-w-2xl flex flex-col justify-center items-center mb-5 p-4  ">
+  <!-- Información de la canción -->
+  <div class="w-full mb-4 text-center">
+    <h2 class="haviland text-4xl font-bold text-gray-800">Tiempo de vals</h2>
+    <p class="text-gray-600 text-sm">Chayanne</p>
+  </div>
+
+  <!-- Controles -->
+  <div class="w-full flex flex-col items-center">
+    <!-- Barra de progreso -->
+    <div class="w-full flex items-center mb-4">
+      <span class="time current-time mr-2 text-sm text-gray-600">0:00</span>
+      <input 
+        type="range" 
+        id="progress" 
+        class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+        min="0" 
+        max="100" 
+        step="0.1"
+      >
+      <span class="time duration ml-2 text-sm text-gray-600">0:00</span>
+    </div>
+
+    <!-- Botones de control -->
+    <div class="flex items-center space-x-4">
+      <button id="playPause" class="play-btn w-12 h-12  rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+        <svg id="playIcon" class="w-6 h-6 text-white" fill="#0d1958" viewBox="0 0 20 20">
+          <path id="playPath" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script lang="ts">
+const audio = new Audio('/audio.mp3');
+let isPlaying = false;
+const audioArtist =  audio.getAttribute('data-artist') || 'Artista Desconocido';
+const audioTitle = audio.getAttribute('data-title') || 'Título Desconocido';
+const playPauseBtn = document.getElementById('playPause');
+const progressBar = document.getElementById('progress');
+const currentTimeEl = document.querySelector('.current-time');
+const durationEl = document.querySelector('.duration');
+const playIcon = document.getElementById('playIcon');
+
+
+const formatTime = (seconds) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+};
+
+
+const updateProgress = () => {
+  if (progressBar && currentTimeEl && audio.duration) {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBar.value = progress.toString();
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+  }
+};
+
+
+audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('loadedmetadata', () => {
+  if (durationEl) {
+    durationEl.textContent = formatTime(audio.duration);
+  }
+});
+
+if (playPauseBtn && playIcon) {
+  playPauseBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      audio.pause();
+      playIcon.innerHTML = '<path id="playPath" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>';
+    } else {
+      audio.play();
+      playIcon.innerHTML = '<path d="M5 4h3v12H5V4zm7 0h3v12h-3V4z"/>';
+    }
+    isPlaying = !isPlaying;
+  });
+}
+
+
+if (progressBar) {
+  progressBar.addEventListener('input', () => {
+    if (audio.duration) {
+      const value = parseFloat(progressBar.value);
+      const time = (value * audio.duration) / 100;
+      audio.currentTime = time;
+    }
+  });
+}
+</script>
+
+<style>
+
+.play-btn {
+  transition: transform 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.05);
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #01173b;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #002d75;
+  border-radius: 50%;
+  cursor: pointer;
+}
+</style>
 </section>
